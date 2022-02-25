@@ -14,22 +14,33 @@ url = 'https://taxifare.lewagon.ai/predict'
 #    st.markdown('Maybe you want to use your own API for the prediction, not the one provided by Le Wagon...')
 
 # 1.1. Date and time input
-
-
 pickup_date = st.date_input("Date you want to travel:")
 pickup_time = st.time_input("Time you want to travel:")
 
-# 1.2. Pickup longitude
-pickup_longitude = st.number_input("Longitude of your pickup-location:" , value = 40.779896883321335)
+# 1.2. Pickup latitude
+pickup_latitude = st.number_input("Latitude of your pickup-location:",
+                                  value = 40.779896883321335,
+                                  min_value = 40.0,
+                                  max_value = 42.0)
 
-# 1.3. Pickup latitude
-pickup_latitude = st.number_input("Latitude of your pickup-location:", value = -73.96799172876831)
+# 1.3. Pickup longitude
+pickup_longitude = st.number_input("Longitude of your pickup-location:" ,
+                                   value = -73.96799172876831,
+                                   min_value = -74.3,
+                                   max_value = -72.9)
 
-# 1.4. dropoff longitude
-dropoff_longitude = st.number_input("Longitude of your dropoff-location:")
 
-# 1.5. dropoff latitude
-dropoff_latitude = st.number_input("Latitude of your dropoff-location:")
+# 1.4. dropoff latitude
+dropoff_latitude = st.number_input("Latitude of your dropoff-location:",
+                                   value = 40.79837281456892,
+                                   min_value = 40.0,
+                                   max_value = 42.0)
+
+# 1.5. dropoff longitude
+dropoff_longitude = st.number_input("Longitude of your dropoff-location:",
+                                    value = -73.95609679023086,
+                                    min_value = -74.3,
+                                    max_value = -72.9)
 
 # 1.6. Number of passengers input
 n_passenger = st.number_input("Number of passengers", min_value = 1, max_value=10 , value = int(1))
