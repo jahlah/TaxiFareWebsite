@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import datetime
 import requests
+from streamlit_folium import folium_static
+import folium
 
 '''
 # TaxiFareModel front
@@ -49,8 +51,17 @@ n_passenger = st.number_input("Number of passengers", min_value = 1, max_value=1
 df = pd.DataFrame({'lon': [float(pickup_longitude), float(dropoff_longitude)],
                    'lat': [float(pickup_latitude), float(dropoff_latitude)]})
 
-st.map(df, zoom = 10)
+# click button
+#if st.button("Show points on map"):
+#    st.map(df, zoom = 10)
 
+
+center_location = [40.758896, -73.985130]
+m = folium.Map(location=center_location, control_scale=True, zoom_start=11)
+
+folium.Marker()
+
+folium_static(m)
 # 2. Build dictionary with parameters for API
 
 # combine date and time
@@ -69,4 +80,6 @@ params = {
 # 3. Call the API
 response = requests.get(url, params = params)
 
-st.write("Your ride will probably cost", round(response.json()["fare"],2) ,"dollars")
+# Click button to see prediction:
+if st.button("predict fare"):
+    st.write("Your ride will probably cost", round(response.json()["fare"],2) ,"dollars")
