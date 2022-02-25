@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 import datetime
 import requests
-from streamlit_folium import folium_static
-import folium
+#from streamlit_folium import folium_static
+#import folium
 
 '''
 # TaxiFareModel front
@@ -56,12 +56,12 @@ df = pd.DataFrame({'lon': [float(pickup_longitude), float(dropoff_longitude)],
 #    st.map(df, zoom = 10)
 
 
-center_location = [40.758896, -73.985130]
-m = folium.Map(location=center_location, control_scale=True, zoom_start=11)
+#center_location = [40.758896, -73.985130]
+#m = folium.Map(location=center_location, control_scale=True, zoom_start=11)
 
-folium.Marker()
+#folium.Marker()
 
-folium_static(m)
+#folium_static(m)
 # 2. Build dictionary with parameters for API
 
 # combine date and time
