@@ -15,14 +15,15 @@ url = 'https://taxifare.lewagon.ai/predict'
 
 # 1.1. Date and time input
 
+
 pickup_date = st.date_input("Date you want to travel:")
 pickup_time = st.time_input("Time you want to travel:")
 
 # 1.2. Pickup longitude
-pickup_longitude = st.number_input("Longitude of your pickup-location:")
+pickup_longitude = st.number_input("Longitude of your pickup-location:" , value = 40.779896883321335)
 
 # 1.3. Pickup latitude
-pickup_latitude = st.number_input("Latitude of your pickup-location:")
+pickup_latitude = st.number_input("Latitude of your pickup-location:", value = -73.96799172876831)
 
 # 1.4. dropoff longitude
 dropoff_longitude = st.number_input("Longitude of your dropoff-location:")
@@ -37,7 +38,7 @@ n_passenger = st.number_input("Number of passengers", min_value = 1, max_value=1
 df = pd.DataFrame({'lon': [float(pickup_longitude), float(dropoff_longitude)],
                    'lat': [float(pickup_latitude), float(dropoff_latitude)]})
 
-st.map(df)
+st.map(df, zoom = 10)
 
 # 2. Build dictionary with parameters for API
 
